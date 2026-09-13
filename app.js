@@ -47,13 +47,12 @@
     for(const e of found.slice(0,state.limit)) {
       const row=document.createElement('article');row.className='result-row'+(e.missing?' missing':'');row.dataset.section=e.id;
       const link=document.createElement('a');link.className='result-main';link.href='#page='+e.page+'&section='+encodeURIComponent(e.id);
-      const path=document.createElement('div');path.className='result-path';path.textContent=[parts.get(e.part).title,...e.parents.slice(-2)].join(' / ');
+      const path=document.createElement('div');path.className='result-path';path.textContent=[parts.get(e.part).title,...e.parentRussian.slice(-2)].join(' / ');
       const title=document.createElement('div');title.className='result-title';
       if(e.code){const code=document.createElement('span');code.className='code';code.textContent=(e.sourceCode||e.code)+' ';title.append(code);}
-      title.append(document.createTextNode(e.ru||e.title));link.append(path,title);
-      if(e.ru){const original=document.createElement('div');original.className='result-translation';original.textContent=e.title;link.append(original);}
-      if(e.missing){const note=document.createElement('span');note.className='missing-label';note.textContent='Начальная страница отсутствует в PDF';link.append(note);}
-      const page=document.createElement('a');page.className='page-link';page.href=link.href;page.textContent='с. '+e.page+' ↗';page.setAttribute('aria-label',`Открыть ${e.title}, страница ${e.page}`);
+      title.append(document.createTextNode(e.ru));link.append(path,title);
+      if(e.missing){const note=document.createElement('span');note.className='missing-label';note.textContent='Начальная страница недоступна';link.append(note);}
+      const page=document.createElement('a');page.className='page-link';page.href=link.href;page.textContent='с. '+e.page+' ↗';page.setAttribute('aria-label',`Открыть ${e.ru}, страница ${e.page}`);
       for(const target of [link,page])target.addEventListener('click',ev=>{ev.preventDefault();openPage(e.page,null,e,target);});
       row.append(link,page);fragment.append(row);
     }
@@ -85,7 +84,7 @@
     applyView();
     if(state.pdf===null)return;
     $('scan-status').textContent='Загрузка страницы…';
-    image.alt=state.printed!==null?`Оригинальный скан: печатная страница ${state.printed}`:`Оригинальный скан: страница PDF ${state.pdf}`;
+    image.alt=state.printed!==null?`Оригинальный скан: печатная страница ${state.printed}`:`Оригинальный скан: страница файла ${state.pdf}`;
     image.onload=()=>{if(currentVersion!==imageVersion)return;image.hidden=false;$('scan-status').hidden=true;};
     image.onerror=()=>{if(currentVersion!==imageVersion)return;$('scan-status').hidden=false;$('scan-status').textContent='Не удалось загрузить скан. Обновите страницу или попробуйте открыть её позже.';};
     image.src=`scans/hq-${String(state.pdf).padStart(3,'0')}.webp`;
