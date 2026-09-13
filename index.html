@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Поиск по главам и темам Mongolian Grammar Кульмана и Цэрэнпила. Чтение оригинальных страниц книги со старомонгольским письмом.">
+  <title>Монгольская грамматика — главы и темы</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="catalog.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#search">Перейти к поиску</a>
+  <header class="masthead wrap">
+    <a class="brand" href="#" aria-label="На главную">ЯЗЫКОВАЯ БИБЛИОТЕКА <span> / </span> МОНГОЛЬСКИЙ</a>
+  </header>
+  <main class="wrap">
+    <section class="intro" aria-labelledby="book-title">
+      <div>
+        <p class="eyebrow">R. Kullmann · D. Tserenpil · 2008</p>
+        <h1 id="book-title">Грамматика<br>монгольского языка</h1>
+        <p class="intro-copy">Работает поиск по темам.<br>Книга представлена сканами.</p>
+      </div>
+      <div class="book-note">
+        <div class="edition">Mongolian<br><em>Grammar</em></div>
+        <p>Четвёртое исправленное издание</p>
+        <span>Английский · кириллица · старомонгольский</span>
+      </div>
+    </section>
+    <section class="search-panel" aria-label="Поиск по книге">
+      <label for="search" class="search-label">НАЙТИ ГЛАВУ ИЛИ ТЕМУ</label>
+      <div class="search-line">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="1.6"/></svg>
+        <input type="search" id="search" placeholder="Например, родительный падеж, genitive, -сан" autocomplete="off" spellcheck="false" aria-describedby="search-help">
+        <button type="button" id="clear-search" class="quiet-button" hidden aria-label="Очистить поиск">Сбросить</button>
+      </div>
+      <p id="search-help">Найдите тему по названию и откройте соответствующий скан.</p>
+      <div class="suggestions" aria-label="Примеры поиска"><span>Попробуйте:</span>
+        <button data-query="гармония гласных">гармония гласных</button><button data-query="падежи">падежи</button><button data-query="прошедшее">прошедшее время</button><button data-query="послелоги">послелоги</button>
+      </div>
+    </section>
+    <div class="library">
+      <aside class="navigation" aria-label="Навигация по книге">
+        <div class="aside-heading"><h2>Содержание</h2><button id="reset-filters" class="quiet-button">Все</button></div>
+        <nav id="parts" aria-label="Части книги"></nav>
+        <label for="topic" class="field-label">ТЕМА</label>
+        <select id="topic"><option value="">Все темы</option></select>
+        <form id="jump-form" class="jump-form">
+          <label for="jump-page" class="field-label">ОТКРЫТЬ СТРАНИЦУ</label>
+          <div class="jump-controls"><input id="jump-page" type="number" min="1" max="448" placeholder="1–448" aria-label="Печатный номер страницы" required><button class="square-button" aria-label="Открыть страницу">→</button></div>
+          <p>Номер, напечатанный в книге</p>
+        </form>
+        <button id="open-toc" class="text-link">Оглавление в оригинале ↗</button>
+        <details class="source-note"><summary>О сканах и нумерации</summary><p>В просмотрщике сохранены все 469 страниц присланного PDF. Печатные страницы 324–327 и 389–390 в этом файле отсутствуют.</p><p>Заголовки перенесены из оглавления; отдельные ошибки распознавания ещё возможны. Русские метки добавлены для поиска. Точные формулировки и примеры смотрите в оригинале.</p></details>
+      </aside>
+      <section class="catalog" aria-labelledby="results-heading">
+        <div class="results-header"><div><p class="eyebrow" id="results-context">ВСЯ КНИГА</p><h2 id="results-heading">Главы и разделы</h2><p id="result-count" role="status" aria-live="polite"></p></div>
+          <label class="detail-toggle"><input id="show-all" type="checkbox">Все подразделы</label>
+        </div>
+        <div id="results"></div>
+        <button id="load-more" class="more-button" hidden>Показать ещё</button>
+        <div id="empty" hidden><h3>Такой темы не найдено</h3><p>Попробуйте другое название на русском или английском либо выберите часть книги. Поиск не распознаёт слова внутри страниц.</p><button id="empty-reset" class="more-button">Вернуться к оглавлению</button></div>
+      </section>
+    </div>
+  </main>
+  <footer class="wrap footer"><span>Mongolian Grammar · 2008</span><span id="book-stats">Оригинальные сканы и навигация по книге</span></footer>
+
+  <dialog id="reader" aria-labelledby="reader-title">
+    <div class="reader-heading"><div><p class="eyebrow" id="reader-context">ОРИГИНАЛ КНИГИ</p><h2 id="reader-title">Страница</h2></div><button id="close-reader" class="close-button" aria-label="Закрыть просмотрщик">✕</button></div>
+    <div class="reader-toolbar">
+      <div class="page-controls"><button id="prev-page" aria-label="Предыдущая страница">←</button><span id="page-position"></span><button id="next-page" aria-label="Следующая страница">→</button></div>
+      <div class="view-controls"><button id="zoom-out" aria-label="Уменьшить">−</button><button id="zoom-reset" title="Масштаб по ширине">100%</button><button id="zoom-in" aria-label="Увеличить">+</button><button id="rotate" title="Повернуть страницу на 180 градусов">↻ <span>Повернуть</span></button><button id="copy-link">Ссылка</button></div>
+    </div>
+    <div id="scan-scroll" tabindex="0" aria-label="Область чтения страницы">
+      <div id="scan-status" role="status">Загрузка страницы…</div>
+      <div id="missing-page" hidden><h3>Этой страницы нет в исходном PDF</h3><p>В присланной книге пропущены печатные страницы 324–327 и 389–390. Можно перейти к ближайшей доступной странице стрелками.</p></div>
+      <img id="scan" alt="" draggable="false" hidden>
+    </div>
+    <div class="reader-foot"><span id="scan-caption"></span></div>
+  </dialog>
+  <div id="toast" role="status" hidden></div>
+  <noscript><p class="wrap">Для поиска по темам и просмотра сканов включите JavaScript.</p></noscript>
+</body>
+</html>
