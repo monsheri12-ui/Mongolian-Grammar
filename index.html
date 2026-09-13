@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Поиск по главам и темам Mongolian Grammar Кульмана и Цэрэнпила. Чтение оригинальных страниц книги со старомонгольским письмом.">
   <title>Монгольская грамматика — главы и темы</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="catalog.js" defer></script>
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260913-hq">
+  <script src="catalog.js?v=20260913-hq" defer></script>
+  <script src="app.js?v=20260913-hq" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#search">Перейти к поиску</a>
@@ -51,7 +51,7 @@
           <p>Номер, напечатанный в книге</p>
         </form>
         <button id="open-toc" class="text-link">Оглавление в оригинале ↗</button>
-        <details class="source-note"><summary>О сканах и нумерации</summary><p>В просмотрщике сохранены все 469 страниц присланного PDF. Печатные страницы 324–327 и 389–390 в этом файле отсутствуют.</p><p>Заголовки перенесены из оглавления; отдельные ошибки распознавания ещё возможны. Русские метки добавлены для поиска. Точные формулировки и примеры смотрите в оригинале.</p></details>
+        <details class="source-note"><summary>О сканах и нумерации</summary><p>В просмотрщике 473 скана из более чёткой копии того же издания. Страницы 324–327 восстановлены. Печатные страницы 389–390 отсутствуют и в этой копии.</p><p>Заголовки перенесены из оглавления; отдельные ошибки распознавания ещё возможны. Русские метки добавлены для поиска. Точные формулировки и примеры смотрите в оригинале.</p></details>
       </aside>
       <section class="catalog" aria-labelledby="results-heading">
         <div class="results-header"><div><p class="eyebrow" id="results-context">ВСЯ КНИГА</p><h2 id="results-heading">Главы и разделы</h2><p id="result-count" role="status" aria-live="polite"></p></div>
@@ -59,7 +59,7 @@
         </div>
         <div id="results"></div>
         <button id="load-more" class="more-button" hidden>Показать ещё</button>
-        <div id="empty" hidden><h3>Такой темы не найдено</h3><p>Попробуйте другое название на русском или английском либо выберите часть книги. Поиск не распознаёт слова внутри страниц.</p><button id="empty-reset" class="more-button">Вернуться к оглавлению</button></div>
+        <div id="empty" hidden><h3>Такой темы не найдено</h3><p>Попробуйте другое название на русском или английском.</p><p id="empty-query"></p><button id="empty-clear" class="more-button" hidden>Очистить поиск в этом разделе</button><button id="empty-reset" class="more-button">Вернуться к оглавлению</button></div>
       </section>
     </div>
   </main>
@@ -73,7 +73,7 @@
     </div>
     <div id="scan-scroll" tabindex="0" aria-label="Область чтения страницы">
       <div id="scan-status" role="status">Загрузка страницы…</div>
-      <div id="missing-page" hidden><h3>Этой страницы нет в исходном PDF</h3><p>В присланной книге пропущены печатные страницы 324–327 и 389–390. Можно перейти к ближайшей доступной странице стрелками.</p></div>
+      <div id="missing-page" hidden><h3>Этой страницы нет в исходном PDF</h3><p>В доступных копиях книги пропущены печатные страницы 389–390. Можно перейти к ближайшей доступной странице стрелками.</p></div>
       <img id="scan" alt="" draggable="false" hidden>
     </div>
     <div class="reader-foot"><span id="scan-caption"></span></div>
