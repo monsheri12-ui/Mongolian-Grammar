@@ -123,7 +123,6 @@
   $('empty-clear').addEventListener('click',()=>setQuery(''));
   $('load-more').addEventListener('click',()=>{state.limit+=60;render();});
   $('jump-form').addEventListener('submit',e=>{e.preventDefault();openPage(Number($('jump-page').value));});
-  $('open-toc').addEventListener('click',()=>openPage(null,10));
   $('prev-page').addEventListener('click',()=>step(-1));$('next-page').addEventListener('click',()=>step(1));
   $('zoom-in').addEventListener('click',()=>{state.zoom=Math.min(250,state.zoom+25);applyView();});
   $('zoom-out').addEventListener('click',()=>{state.zoom=Math.max(75,state.zoom-25);applyView();});
